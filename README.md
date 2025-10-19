@@ -8,6 +8,7 @@ Automated weather display and power management for AWTRIX 3 LED pixel clocks.
 
 - **Weather Display**: Fetches current weather data for Berlin and displays temperature range with rainbow text animation
 - **Auto Power Management**: Automatically wakes the clock in the morning and puts it to sleep at night
+- **Clock Configuration**: Applies predefined settings for brightness, colors, time/date formats, and display modes
 - **Scheduled Updates**: Uses macOS launchd to run tasks automatically
 
 ## Quick Start
@@ -61,6 +62,11 @@ PUSH_MODE="custom"            # "custom" or "notify"
 ```bash
 ./clock-sleep-wake.sh wake    # Turn on
 ./clock-sleep-wake.sh sleep   # Turn off
+```
+
+**Apply clock settings:**
+```bash
+./clock-settings.sh           # Configure brightness, colors, formats, etc.
 ```
 
 **Use custom settings:**
@@ -122,6 +128,17 @@ Log files are created at `/Users/liangshi/Utilities/my-ulanzi-clock/`:
 
 Uses the AWTRIX `/api/power` endpoint to control display power state.
 
+### Settings Script
+
+Configures the clock with 40+ predefined settings including:
+- **Display**: Brightness (10), auto-brightness, gamma correction
+- **Time/Date**: 24-hour format (%H %M), European date format (%d.%m.%y)
+- **Colors**: Text (white), clock hour (red), weekday indicators (white/gray)
+- **Behavior**: Auto-transition between apps, transition speed, app display time
+- **Audio**: Sound enabled, volume at 25%
+
+All settings are documented with inline comments in the script. Color values use decimal RGB format (e.g., 16777215 = white).
+
 ## Technical Details
 
 - **Weather codes**: WMO standard (0-99) mapped to German labels
@@ -132,6 +149,7 @@ Uses the AWTRIX `/api/power` endpoint to control display power state.
   - `/api/custom?name=<APP_NAME>` (persistent)
   - `/api/notify` (one-shot)
   - `/api/power` (sleep/wake)
+  - `/api/settings` (configuration)
 
 For complete API documentation, see the [AWTRIX 3 API Documentation](https://blueforcer.github.io/awtrix3/#/api).
 

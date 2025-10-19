@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This repository contains Bash scripts for managing an AWTRIX 3 LED pixel clock:
 - `berlin-weather.sh`: Fetches weather data for Berlin and displays it on the clock
 - `clock-sleep-wake.sh`: Controls the clock's power state (sleep/wake)
+- `clock-settings.sh`: Applies predefined configuration settings to the clock
 
 ## Architecture
 
@@ -53,6 +54,11 @@ This will:
 ```bash
 ./clock-sleep-wake.sh wake   # Turn on the display
 ./clock-sleep-wake.sh sleep  # Turn off the display
+```
+
+**Apply clock settings**:
+```bash
+./clock-settings.sh
 ```
 
 **With custom settings**:
@@ -105,6 +111,13 @@ launchctl load ~/Library/LaunchAgents/de.octostack.ulanzi.sleep.plist
 **Sleep/Wake Script (clock-sleep-wake.sh)**:
 - Uses AWTRIX `/api/power` endpoint with `{"power":true}` (wake) or `{"power":false}` (sleep)
 - Accepts single argument: `wake` or `sleep`
+
+**Settings Script (clock-settings.sh)**:
+- Uses AWTRIX `/api/settings` endpoint to configure clock behavior
+- Sets 40+ parameters including brightness, colors, time/date formats, display modes
+- All settings documented with inline comments (lines 11-49)
+- Key settings: BRI=10 (brightness), TFORMAT="%H %M" (24-hour), DFORMAT="%d.%m.%y" (European date)
+- Color values are decimal RGB (16777215=white, 16711680=red, 6710886=gray)
 
 **Launchd Schedules**:
 - Weather update: 8:00 AM daily (de.octostack.ulanzi.berlin-weather.plist)
