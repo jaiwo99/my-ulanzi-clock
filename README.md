@@ -2,6 +2,8 @@
 
 Automated weather display and power management for AWTRIX 3 LED pixel clocks.
 
+![Berlin Weather Display](images/berlin-weather.png)
+
 ## Features
 
 - **Weather Display**: Fetches current weather data for Berlin and displays temperature range with rainbow text animation
