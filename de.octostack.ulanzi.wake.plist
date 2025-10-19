@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>de.octostack.ulanzi.wake</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/liangshi/Utilities/my-ulanzi-clock/clock-sleep-wake.sh</string>
+        <string>wake</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>7</integer>
+        <key>Minute</key>
+        <integer>58</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/liangshi/Utilities/my-ulanzi-clock/clock-wake.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/liangshi/Utilities/my-ulanzi-clock/clock-wake.error.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>
